@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - PriceTracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-purple-50 dark:bg-purple-900 flex items-center justify-center min-h-screen font-poppins">
+    <div class="w-full max-w-md p-8 space-y-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg animate-fade-in-down">
+        <div class="text-center">
+            <i class="fas fa-user-plus text-4xl text-purple-600 dark:text-purple-400 mb-4"></i>
+            <h1 class="text-3xl font-bold text-purple-600 dark:text-purple-400">Create Your Account</h1>
+            <p class="text-gray-500 dark:text-gray-400">Join PriceWise and start saving!</p>
+        </div>
+        <form id="signup-form" class="space-y-6">
+            <div>
+                <label for="name" class="text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
+                <input id="name" type="text" required class="form-input" placeholder="John Doe">
+            </div>
+             <div>
+                <label for="phone" class="text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number</label>
+                <input id="phone" type="tel" required class="form-input" placeholder="+91 12345 67890">
+            </div>
+             <div>
+                <label for="email" class="text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
+                <input id="email" type="email" required class="form-input" placeholder="you@example.com">
+            </div>
+            <div>
+                <label for="password" class="text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+                <input id="password" type="password" required class="form-input" placeholder="••••••••">
+            </div>
+             <div>
+                <label for="confirm-password" class="text-sm font-medium text-gray-700 dark:text-gray-300">Confirm Password</label>
+                <input id="confirm-password" type="password" required class="form-input" placeholder="••••••••">
+            </div>
+            <div>
+                <button type="submit" class="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 hover:scale-105 hover:shadow-lg text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-all">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </button>
+            </div>
+        </form>
+    </div>
+    
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script>
+    const firebaseConfig = { /* ... PASTE YOUR CONFIG OBJECT HERE ... */ };
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        // Use Firebase to create a new user
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Signed up successfully
+                const user = userCredential.user;
+                console.log('Successfully created account for:', user.email);
+                alert('Account created successfully! Redirecting to homepage...');
+                window.location.href = 'index.html';
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorMessage = error.message;
+                console.error("Signup Error:", errorMessage);
+                alert(`Error: ${errorMessage}`);
+            });
+    });
+</script>
+</body>
+</html>

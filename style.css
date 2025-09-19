@@ -1,0 +1,75 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode Configuration using Tailwind's 'dark' variant */
+.dark {
+    /* Tailwind will automatically handle dark mode colors with `dark:` prefixes */
+}
+
+/* --- Component Styling --- */
+
+/* Product Card Styling & Hover Animation */
+.product-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 ease-in-out;
+}
+
+/* Feature Card Styling */
+.feature-card {
+    @apply bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center;
+}
+
+/* Form Input Styling */
+.form-input {
+    @apply w-full mt-1 px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 transition-all;
+}
+
+.form-input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+/* Price Box on Product Page */
+.price-box {
+    @apply p-4 rounded-lg border-2 text-center;
+}
+
+/* Store Buttons on Product Page */
+.store-button {
+    @apply w-full text-center text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+}
+
+/* --- Animations --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+/* Custom SweetAlert2 Dark Mode Styling */
+body.dark .swal2-popup {
+    background-color: #1f2937 !important; /* gray-800 */
+    color: #f3f4f6 !important; /* gray-100 */
+}
+body.dark .swal2-title {
+    color: #c4b5fd !important; /* violet-300 */
+}
+body.dark .swal2-input {
+    background-color: #374151 !important; /* gray-700 */
+    border: 1px solid #4b5563 !important; /* gray-600 */
+    color: #f3f4f6 !important;
+}

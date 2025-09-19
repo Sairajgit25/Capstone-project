@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriceTracker - Track Prices Smartly</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-poppins">
+
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <button id="login-btn" class="text-2xl text-purple-600 dark:text-purple-400 hover:scale-110 transition-transform">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="product image\pricetrackerLOGO.jpg" alt="PriceWise Logo" class="h-10">
+                <span class="text-2xl font-bold text-purple-600 dark:text-purple-400">PriceTracker</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="hover:text-purple-600 transition-colors">Explore</a>
+                <a href="#" class="hover:text-purple-600 transition-colors">Saved Products</a>
+                <a href="#" class="hover:text-purple-600 transition-colors">Dashboard</a>
+                <button id="dark-mode-toggle" class="text-xl"><i class="fas fa-moon"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 text-center">
+        <section class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-down">Never Overpay Again</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Paste a product link or search by name to track prices across top stores.</p>
+            <!-- <form class="max-w-2xl mx-auto" action="product.html"> -->
+            <form class="max-w-2xl mx-auto" id="track-form">   </form>  
+                <div class="relative">
+                    <input type="search" placeholder="Enter product name or paste URL..." class="w-full p-4 rounded-full bg-white dark:bg-gray-700 border-2 border-transparent focus:border-purple-500 focus:ring-0 transition-all shadow-lg">
+                    <button type="submit" class="absolute top-1/2 right-4 -translate-y-1/2 text-xl text-purple-600 hover:scale-125 transition-transform">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">Best Deals, Grab Now! 🔥</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="product-card">
+                    <img src="product image\sonyHeadphone.webp" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">SONY Wireless Headphones</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-green-500">₹4,999</span>
+                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="product image\iPhone-16-Pro-Max-784x441.webp" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">iPhone-16-Pro-Max</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-green-500">₹69,500</span>
+                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="product-card">
+                    <img src="product image\lenovoLOQ.webp" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Lenovo LOQ 15</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-green-500">₹90,300</span>
+                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="product-card">
+                    <img src="product image\boultwatch.webp" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">BOULT smart Watch</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-green-500">₹2,599</span>
+                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">Why Choose PriceWise?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="feature-card">
+                    <i class="fas fa-tags text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Multi-Platform Tracking</h3>
+                    <p>Track prices from Amazon, Flipkart, and more in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Price History</h3>
+                    <p>View detailed graphs to know the perfect time to buy.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bell text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Instant Alerts</h3>
+                    <p>Get notified via email when a product's price drops.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-mobile-alt text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Fully Responsive</h3>
+                    <p>Access our service on any device, anywhere, anytime.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="bg-white dark:bg-gray-800 py-8 rounded-lg shadow-inner">
+             <h2 class="text-3xl font-bold mb-4">About Us</h2>
+             <p class="max-w-3xl mx-auto text-gray-600 dark:text-gray-400">
+                PriceWise was created by a passionate team of developers dedicated to helping shoppers save money. Our mission is to provide powerful, easy-to-use tools that make online shopping transparent and affordable.
+             </p>
+        </footer>
+    </main>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAmVa4cSf-IPo_YLfc7AI2QtHNWv5YYyy8",
+    authDomain: "price-tracker-f3f77.firebaseapp.com",
+    projectId: "price-tracker-f3f77",
+    storageBucket: "price-tracker-f3f77.firebasestorage.app",
+    messagingSenderId: "287017832460",
+    appId: "1:287017832460:web:59bf56806d37940f825e29",
+    measurementId: "G-3XD0MLE24N"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
