@@ -15,46 +15,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+<html lang="en">
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-poppins">
-
-    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+    <header class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-md shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center">
+            <div id="auth-container">
                 <button id="login-btn" class="text-2xl text-purple-600 dark:text-purple-400 hover:scale-110 transition-transform">
                     <i class="fas fa-user-circle"></i>
                 </button>
             </div>
             <div class="flex flex-col items-center">
-                <img src="product image\pricetrackerLOGO.jpg" alt="PriceWise Logo" class="h-10">
+                <img src="product image/pricetrackerLOGO.jpg" alt="PriceTracker Logo" class="h-10">
                 <span class="text-2xl font-bold text-purple-600 dark:text-purple-400">PriceTracker</span>
             </div>
             <div class="hidden md:flex items-center space-x-6">
-                <a href="#" class="hover:text-purple-600 transition-colors">Explore</a>
-                <a href="#" class="hover:text-purple-600 transition-colors">Saved Products</a>
-                <a href="#" class="hover:text-purple-600 transition-colors">Dashboard</a>
+                <a href="#" class="nav-link">Category</a>
+                <a href="#" class="nav-link">Compare</a>
+                <a href="#" id="dashboard-link" class="nav-link hidden">Dashboard</a>
                 <button id="dark-mode-toggle" class="text-xl"><i class="fas fa-moon"></i></button>
             </div>
         </nav>
     </header>
 
     <main class="container mx-auto px-6 py-12 text-center">
-        <section class="mb-16">
+       <section class="mb-16 p-8 md:p-16 rounded-lg shadow-xl animated-background text-white">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-down">Never Overpay Again</h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Paste a product link or search by name to track prices across top stores.</p>
-            <!-- <form class="max-w-2xl mx-auto" action="product.html"> -->
-            <form class="max-w-2xl mx-auto" id="track-form">   </form>  
+            <p class="text-lg mb-8">Paste a product link to track its price across top stores.</p>
+             <form class="max-w-2xl mx-auto" action="product.html">
+            <!-- <form class="max-w-2xl mx-auto" id="track-form"> -->
                 <div class="relative">
-                    <input type="search" placeholder="Enter product name or paste URL..." class="w-full p-4 rounded-full bg-white dark:bg-gray-700 border-2 border-transparent focus:border-purple-500 focus:ring-0 transition-all shadow-lg">
+                    <input type="search" placeholder="Enter product URL..." class="w-full p-4 rounded-full bg-white/80 dark:bg-gray-700/80 text-gray-800 dark:text-gray-200 border-2 border-transparent focus:border-purple-500 focus:ring-0 transition-all shadow-lg">
                     <button type="submit" class="absolute top-1/2 right-4 -translate-y-1/2 text-xl text-purple-600 hover:scale-125 transition-transform">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-            
+            </form>
         </section>
 
         <section class="mb-16">
             <h2 class="text-3xl font-bold mb-8">Best Deals, Grab Now! 🔥</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div id="best-deals-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                </div> 
+            <!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="product-card">
                     <img src="product image\sonyHeadphone.webp" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
                     <div class="p-4">
@@ -95,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
 
         <section class="mb-16">

@@ -1,8 +1,48 @@
 // The URL of your deployed Python backend
-const API_URL = 'https://pricewise-backend.onrender.com'; // Use your actual Render URL
+const API_URL = 'https://price-tracker-mf2g.onrender.com';
 
 $(document).ready(function() {
+    // --- Authentication State Listener ---
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            // User is signed in
+            $('#dashboard-link').removeClass('hidden');
+            $('#auth-container').html(`
+                <button id="logout-btn" class="text-2xl text-red-500 dark:text-red-400 hover:scale-110 transition-transform">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            `);
+        } else {
+            // User is signed out
+            $('#dashboard-link').addClass('hidden');
+            $('#auth-container').html(`
+                <button id="login-btn" class="text-2xl text-purple-600 dark:text-purple-400 hover:scale-110 transition-transform">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            `);
+        }
+    });
 
+    // --- Event Delegation for Login/Logout ---
+    $(document).on('click', '#login-btn', handleLogin);
+    $(document).on('click', '#logout-btn', handleLogout);
+    
+    // --- Load Dynamic Content ---
+    loadBestDeals();
+
+    // --- UI Effects ---
+    // Navbar scroll effect
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 10) {
+            $('#navbar').addClass('shadow-lg').removeClass('shadow-md');
+        } else {
+            $('#navbar').removeClass('shadow-lg').addClass('shadow-md');
+        }
+    });
+
+    // Dark Mode Toggle
+    // ... (keep the dark mode toggle logic exactly as it was) ...
+    
     // --- Dark Mode Toggle ---
     const darkModeToggle = $('#dark-mode-toggle');
     const html = $('html');
@@ -24,8 +64,45 @@ $(document).ready(function() {
             darkModeToggle.html('<i class="fas fa-sun"></i>');
         }
     });
+});
 
-    // --- Login Modal using SweetAlert2 ---
+// --- Dynamic Content Loading ---
+async function loadBestDeals() {
+    try {
+        const response = await fetch(`${API_URL}/best-deals`);
+        const deals = await response.json();
+        const container = $('#best-deals-container');
+        container.empty(); // Clear existing content
+
+        deals.forEach(deal => {
+            const productUrl = `product.html?url=${encodeURIComponent(deal.url)}`;
+            const cardHtml = `
+                <a href="${productUrl}" class="product-card-link">
+                    <div class="product-card">
+                        <img src="${deal.image}" alt="${deal.title}" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 truncate">${deal.title}</h3>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-green-500">₹${deal.price}</span>
+                                <span class="text-yellow-400"><i class="fas fa-star"></i> ${deal.rating}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `;
+            container.append(cardHtml);
+        });
+    } catch (error) {
+        console.error("Failed to load best deals:", error);
+        $('#best-deals-container').html('<p class="text-red-500">Could not load deals. Please try again later.</p>');
+    }
+}
+
+
+// --- Authentication Functions ---
+function handleLogin() {
+    // ... (keep the entire SweetAlert2 login logic as it was) ...
+     // --- Login Modal using SweetAlert2 ---
 $('#login-btn').on('click', function() {
     Swal.fire({
         title: 'Login / Sign In',
@@ -63,9 +140,19 @@ $('#login-btn').on('click', function() {
         }
     });
 });
+}
 
-});
+function handleLogout() {
+    firebase.auth().signOut().then(() => {
+        Swal.fire('Logged Out', 'You have been successfully logged out.', 'success');
+    }).catch(error => {
+        console.error("Logout Error:", error);
+        Swal.fire('Error', 'Failed to log out.', 'error');
+    });
+}
 
+// --- Tracking Form Submission ---
+// ... (keep the $('#track-form').on('submit', ...) logic exactly as it was) ...
 
 $('#track-form').on('submit', async function(event) {
     event.preventDefault(); // Stop the form from navigating away

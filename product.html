@@ -11,98 +11,46 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-poppins">
 
-    <header class="bg-white dark:bg-gray-800 shadow-md">
-       <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl text-purple-600 dark:text-purple-400 hover:scale-110 transition-transform">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            <div class="flex flex-col items-center">
-                <img src="product image\pricetrackerLOGO.jpg" alt="PriceWise Logo" class="h-10">
-                <span class="text-2xl font-bold text-purple-600 dark:text-purple-400">PriceWise</span>
-            </div>
-            <div class="w-8"></div> </nav>
-    </header>
-
     <main class="container mx-auto px-6 py-12">
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
             <div>
-                <img src="product image\sonyHeadphone.webp" alt="Main Product Image" class="w-full rounded-lg shadow-lg">
+                <img id="product-image" src="https://via.placeholder.com/600x600" alt="Main Product Image" class="w-full rounded-lg shadow-lg">
             </div>
             <div class="flex flex-col justify-center">
-                <h1 class="text-4xl font-bold mb-4">Sony WH-1000XM5 Wireless Headphones</h1>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Industry-leading noise canceling with two processors controlling eight microphones for unprecedented noise cancellation.</p>
+                <h1 id="product-title" class="text-4xl font-bold mb-4">Loading Product...</h1>
+                <p id="product-description" class="text-gray-600 dark:text-gray-400 mb-6">Fetching details, please wait.</p>
                 
                 <div class="grid grid-cols-2 gap-4 mb-6">
                     <div class="price-box bg-red-100 dark:bg-red-900/50 border-red-500">
                         <h4 class="text-red-500 font-bold">Highest Price</h4>
-                        <p class="text-2xl font-semibold">₹29,990</p>
+                        <p id="highest-price" class="text-2xl font-semibold">₹-</p>
                     </div>
                     <div class="price-box bg-green-100 dark:bg-green-900/50 border-green-500">
                         <h4 class="text-green-500 font-bold">Lowest Price</h4>
-                        <p class="text-2xl font-semibold">₹24,500</p>
+                        <p id="lowest-price" class="text-2xl font-semibold">₹-</p>
                     </div>
                 </div>
-                 <div class="price-box bg-yellow-100 dark:bg-yellow-900/50 border-yellow-500 w-full lg:w-1/2 mx-auto mb-6">
-                    <h4 class="text-yellow-500 font-bold">Average Price</h4>
-                    <p class="text-2xl font-semibold">₹26,750</p>
+                <div class="price-box bg-yellow-100 dark:bg-yellow-900/50 border-yellow-500 w-full lg:w-1/2 mx-auto mb-6">
+                    <h4 class="text-yellow-500 font-bold">Current Price</h4>
+                    <p id="current-price" class="text-2xl font-semibold">₹-</p>
                 </div>
                 
                 <div class="flex space-x-4">
-                    <a href="#" class="store-button bg-blue-600 hover:bg-blue-700">View on Amazon <i class="fab fa-amazon"></i></a>
-                    <a href="#" class="store-button bg-yellow-500 hover:bg-yellow-600">View on Flipkart</a>
+                    <a id="amazon-link" href="#" target="_blank" class="store-button bg-blue-600 hover:bg-blue-700">View on Amazon <i class="fab fa-amazon"></i></a>
+                    <a id="flipkart-link" href="#" target="_blank" class="store-button bg-yellow-500 hover:bg-yellow-600">View on Flipkart</a>
                 </div>
             </div>
         </section>
 
         <section class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg mb-12">
-            <h2 class="text-2xl font-bold mb-4 text-center">Price History (Last 30 Days)</h2>
+            <h2 class="text-2xl font-bold mb-4 text-center">Price History</h2>
             <canvas id="priceHistoryChart"></canvas>
         </section>
 
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-4">Specifications</h2>
-            <div class="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-                <table class="w-full text-left">
-                    <thead class="border-b dark:border-gray-600">
-                        <tr>
-                            <th class="p-4">Feature</th>
-                            <th class="p-4">Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b dark:border-gray-600">
-                            <td class="p-4 font-semibold">Brand</td>
-                            <td class="p-4">Sony</td>
-                        </tr>
-                        <tr class="border-b dark:border-gray-600">
-                            <td class="p-4 font-semibold">Model</td>
-                            <td class="p-4">WH-1000XM5</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-semibold">Color</td>
-                            <td class="p-4">Black</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        
-        <section>
-             <h2 class="text-3xl font-bold mb-8 text-center">You Might Also Like</h2>
-             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Bose QuietComfort 45</h3>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-green-500">₹27,900</span>
-                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.6</span>
-                        </div>
-                    </div>
-                </div>
-                </div>
-        </section>
-    </main>
+        </main>
+
+    
+    <script src="product.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
